@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% block title %}Welcome{% endblock %}
+{% block content %}
+<section class="hero rounded-4 p-4 p-lg-5">
+ <div class="row align-items-center"><div class="col-lg-7">
+ <span class="eyebrow">SMARTER BANKING, SIMPLIFIED</span><h1 class="display-4 fw-bold mt-3">Your money.<br><span class="text-lime">More in control.</span></h1>
+ <p class="lead text-white-50 mt-3">A student-built digital banking simulation with account management, demo transfers, transaction insights and a banking assistant.</p>
+ <a class="btn btn-lime btn-lg me-2" href="{{ url_for('register') }}">Create demo account</a><a class="btn btn-outline-light btn-lg" href="{{ url_for('login') }}">Sign in</a>
+ </div><div class="col-lg-5 mt-4 mt-lg-0"><div class="sample-card"><div class="d-flex justify-content-between"><span>CHATFIN WALLET</span><span>••• 2048</span></div><div class="small opacity-75 mt-4">DEMO AVAILABLE BALANCE</div><div class="display-5 fw-bold">₹10,000.00</div><div class="mt-4 d-flex justify-content-between"><span>Secure demo</span><span>◈</span></div></div></div></div>
+</section>
+<div class="row g-3 mt-3">{% for title,desc in [('Account dashboard','View your demo account balance and activity.'),('Smart transfers','Move simulated funds between Chatfin accounts.'),('Fraud screening','Review transfers that trigger simple risk rules.'),('Banking chatbot','Get instant answers to common banking questions.')] %}
+<div class="col-md-6 col-lg-3"><div class="feature-card h-100"><h5>{{ title }}</h5><p class="text-secondary mb-0">{{ desc }}</p></div></div>{% endfor %}</div>
+{% endblock %}

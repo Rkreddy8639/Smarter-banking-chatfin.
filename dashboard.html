@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block title %}Dashboard{% endblock %}{% block content %}
+<div class="d-flex flex-wrap justify-content-between align-items-center mb-4"><div><div class="eyebrow text-primary">OVERVIEW</div><h2 class="fw-bold mb-0">Hello, {{ user.full_name }}</h2><div class="text-secondary small">Account: {{ user.account_number }}</div></div><a class="btn btn-primary mt-2" href="{{ url_for('transfer') }}">+ New transfer</a></div>
+<div class="row g-3"><div class="col-md-4"><div class="stat-card dark"><div class="small opacity-75">AVAILABLE DEMO BALANCE</div><div class="display-6 fw-bold">₹{{ "%.2f"|format(user.balance) }}</div><div class="small opacity-75">Simulated funds only</div></div></div>
+<div class="col-md-4"><div class="stat-card"><div class="small text-secondary">TOTAL CREDITS</div><div class="display-6 fw-bold text-success">₹{{ "%.2f"|format(totals.credits) }}</div></div></div>
+<div class="col-md-4"><div class="stat-card"><div class="small text-secondary">TOTAL DEBITS</div><div class="display-6 fw-bold text-danger">₹{{ "%.2f"|format(totals.debits) }}</div></div></div></div>
+<div class="card border-0 shadow-sm mt-4"><div class="card-body"><div class="d-flex justify-content-between"><h5 class="fw-bold">Recent activity</h5><a href="{{ url_for('transactions') }}">View all</a></div>
+{% if transactions %}<div class="table-responsive"><table class="table align-middle"><thead><tr><th>Type</th><th>Description</th><th>Date</th><th class="text-end">Amount</th></tr></thead><tbody>
+{% for t in transactions %}<tr><td><span class="badge {{ 'text-bg-success' if t.txn_type=='CREDIT' else 'text-bg-danger' }}">{{ t.txn_type }}</span></td><td>{{ t.description }}</td><td>{{ t.created_at }}</td><td class="text-end fw-semibold">₹{{ "%.2f"|format(t.amount) }}</td></tr>{% endfor %}
+</tbody></table></div>{% else %}<p class="text-secondary mb-0">No transactions yet.</p>{% endif %}</div></div>
+{% endblock %}

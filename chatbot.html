@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block title %}Chatfin Assistant{% endblock %}{% block content %}
+<div class="form-shell"><div class="eyebrow text-primary">CHATFIN ASSISTANT</div><h2 class="fw-bold">How can I help?</h2><p class="text-secondary">Ask about your demo balance, transfers, transaction history, login or fraud screening.</p>
+{% if answer %}<div class="chat-answer"><strong>You asked:</strong> {{ question }}<hr><strong>Chatfin:</strong> {{ answer }}</div>{% endif %}
+<form method="post"><div class="mb-3"><label class="form-label">Your question</label><input class="form-control" name="question" value="{{ question }}" placeholder="What is my balance?" required></div><button class="btn btn-primary w-100">Ask Chatfin</button></form></div>{% endblock %}

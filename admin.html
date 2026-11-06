@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block title %}Admin{% endblock %}{% block content %}
+<h2 class="fw-bold">Admin overview</h2><p class="text-secondary">Demo users and fraud alerts.</p>
+<div class="card border-0 shadow-sm mb-4"><div class="card-body"><h5>Customers</h5><div class="table-responsive"><table class="table"><thead><tr><th>Name</th><th>Email</th><th>Account</th><th>Balance</th></tr></thead><tbody>{% for u in users %}<tr><td>{{u.full_name}}</td><td>{{u.email}}</td><td>{{u.account_number}}</td><td>₹{{"%.2f"|format(u.balance)}}</td></tr>{% endfor %}</tbody></table></div></div></div>
+<div class="card border-0 shadow-sm"><div class="card-body"><h5>Fraud review alerts</h5><div class="table-responsive"><table class="table"><thead><tr><th>User</th><th>Amount</th><th>Reason</th><th>Risk</th><th>Date</th></tr></thead><tbody>{% for a in alerts %}<tr><td>{{a.full_name}}</td><td>₹{{"%.2f"|format(a.amount)}}</td><td>{{a.reason}}</td><td>{{a.risk_score}}%</td><td>{{a.created_at}}</td></tr>{% else %}<tr><td colspan="5" class="text-secondary">No alerts.</td></tr>{% endfor %}</tbody></table></div></div></div>
+{% endblock %}
